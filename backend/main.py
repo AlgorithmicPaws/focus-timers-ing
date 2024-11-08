@@ -45,6 +45,18 @@ def create_user(user: schemas.UserBase, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user  # Response model should exclude the hashed password
 
+@app.put("/users/{user_email}/password", response_model=schemas.UserResponse)
+def update_password(user_email: str, new_password: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == user_email).first()
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    hashed_password = pwd_context.hash(new_password)
+    user.password = hashed_password
+
+    db.commit()
+    db.refresh(user)
+    return user
 
 @app.get("/users/{user_email}", response_model=schemas.UserBase)
 def read_user(user_email: str, db: Session = Depends(get_db)):
@@ -52,6 +64,17 @@ def read_user(user_email: str, db: Session = Depends(get_db)):
     if user is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     return user 
+
+
+@app.delete("/users/{user_email}", response_model=schemas.UserResponse)
+def delete_user(user_email: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.email == user_email).first()
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    db.delete(user)
+    db.commit()
+    return user
+
 
 @app.post("/login", response_model=bool)
 def login(email: str, password: str, db: Session = Depends(get_db)):
@@ -134,6 +157,15 @@ def get_focus_sessions(
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No sessions found for the specified user and interval")
 
     return sessions
+
+@app.delete("/sessions/{session_id}", response_model=schemas.FocusSessionTimeFormat)
+def delete_focus_session(session_id: int, db: Session = Depends(get_db)):
+    session = db.query(models.FocusSession).filter(models.FocusSession.id == session_id).first()
+    if session is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found")
+    db.delete(session)
+    db.commit()
+    return session
 
 @app.get("/")
 def read_root():
