@@ -76,17 +76,7 @@ header nav ul li a {
 header nav ul li a:hover {
   color: #f5421f;
 }
-header .donation-button {
-  background-image: url('../public/images/bmc-button.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 10rem;
-  height: 2.5rem;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
+
 a {
   text-decoration: none;
   color: inherit;
