@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: #fff3e2;
+  height: 100vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Header */
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 1rem 1rem 0.5rem;
+  border-bottom: 2px solid #f3e5d1;
+}
+
+main{
+  margin-bottom: 20rem;
+}
+
+#logo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+#logo-link h1 {
+  font-weight: 700;
+  font-size: 1.5rem; 
+}
+header .page-logotype{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+header .page-logotype img {
+  height: 3rem;
+  margin-right: 0.5rem;
+}
+header .navegation-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+
+}
+header nav {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-.App-link {
-  color: #61dafb;
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
+
+header nav ul li a:hover {
+  color: #f5421f;
+}
+header .donation-button {
+  background-image: url('../public/images/bmc-button.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 10rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+

@@ -1,0 +1,226 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+body {
+    background-color: #fff3e2;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem 1rem 0.5rem;
+    border-bottom: 2px solid #f3e5d1;
+}
+main{
+    margin-bottom: 20rem;
+}
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+.logo-link h1 {
+    font-weight: 700;
+    font-size: 1.5rem; 
+}
+header .page-logotype{
+    display: flex;
+    align-items: center;
+}
+header .page-logotype img {
+    height: 3rem;
+    margin-right: 0.5rem;
+}
+header .navegation-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+
+}
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+header nav ul li a:hover {
+    color: #f5421f;
+}
+header .donation-button {
+    background-image: url('../public/images/bmc-button.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.pomodoro-timer {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 6rem;
+}
+.time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /*Safari */
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+}
+
+.time-container .time {
+    font-size: 12rem;
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;     
+    text-decoration: none; 
+}
+
+.timer-settings {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    
+}
+.timer-settings .timer-parameters{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); /*Safari */
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.timer-settings .timer-parameters .form-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+.form-group input {
+    padding: 0.3rem;
+    border: 2px solid rgb(243, 229, 209);
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    margin-right: 0.4rem;
+    width: 6rem;
+}
+.form-group label {
+    font-size: 1rem;
+    font-weight: 350;
+}
+#focus-label {
+    color: #db0b08;
+}
+.form-group #focus-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.3rem;
+}
+.form-group #coffe-icon {
+    width: 4rem;
+    height: 4rem;
+}
+.form-group #couch-icon {
+    width: 2rem;
+    height: 3rem;
+    margin-right: 1rem;
+ 
+}
+.form-group #tomato-icon {
+    width: 2rem;
+    height: 3rem;
+    margin-right: 1rem;
+ 
+}
+.timer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.timer-buttons button {
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background: #f5421f66;
+    cursor: pointer;
+}
+.timer-buttons button:hover {
+    background:rgba(245, 66, 31, 1);
+}
+
+.focus{
+    border-color: #db0b08;
+}
+
+#focus.time-setter{
+    border-color: #db0b08;
+}
+
+#break.time-setter{
+    border-color: #865e3c;
+}
+
+#longbreak.time-setter{
+    border-color: #508c2b;
+}
+
+#amount.time-setter{
+    border-color: #000000;
+}
+
+
