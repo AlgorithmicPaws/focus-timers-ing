@@ -8,6 +8,8 @@ from typing import List, Optional
 from datetime import datetime, timedelta
 import models
 import schemas
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
 app.title = "Focus Timers API"
@@ -24,6 +26,15 @@ def get_db():
 
 db_dependency = Annotated[Session, Depends(get_db)]
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Adjust this to specify allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/users/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserResponse)
 def create_user(user: schemas.UserBase, db: Session = Depends(get_db)):
@@ -76,12 +87,15 @@ def delete_user(user_email: str, db: Session = Depends(get_db)):
     return user
 
 
+
 @app.post("/login", response_model=bool)
-def login(email: str, password: str, db: Session = Depends(get_db)):
-    user = db.query(models.User).filter(models.User.email == email).first()
-    if user and pwd_context.verify(password, user.password):
+def login(request: schemas.LoginRequest, db: Session = Depends(get_db)):
+    print(request)  # Debug log
+    user = db.query(models.User).filter(models.User.email == request.email).first()
+    if user and pwd_context.verify(request.password, user.password):
         return True
     raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
+
 
 @app.post("/sessions/", status_code=status.HTTP_201_CREATED, response_model=None)
 def create_focus_session(session: schemas.FocusSessionBase, db: Session = Depends(get_db)):

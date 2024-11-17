@@ -54,4 +54,8 @@ class FocusSessionTimeFormat(BaseModel):
     class Config:
         orm_mode = True
 
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
 # Jennsy aprove this code
