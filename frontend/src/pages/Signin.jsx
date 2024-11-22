@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './signin.css';
+import '../styles/signin.css';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
-import { createUser } from './api'; // Import the API utility function
+import { createUser } from '../api'; // Import the API utility function
 import Login from './Login';
 
 export default function Signin() {

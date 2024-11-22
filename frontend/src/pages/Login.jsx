@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './login.css';
+import '../styles/login.css';
 import { Route, Routes, Link, useNavigate } from 'react-router-dom';
-import { loginUser } from './api'; // Import the login API call
-import eye from './images/eye.svg';
-import eyeblock from './images/eye-block.svg';
+import { loginUser } from '../api'; // Import the login API call
+import eye from '../assets/images/eye.svg';
+import eyeblock from '../assets/images/eye-block.svg';
 import Signin from './Signin';
 
 export default function Login() {
