@@ -68,5 +68,54 @@ header {
     color: inherit;
   }
   
+.user-image{
+  max-width: 2.3rem;
+  max-height: 2.3rem;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
   
-  
+ul img{
+  max-width: 1.5rem;
+  max-height: 1.5rem;
+}
+
+.donation-button img{
+  max-height: 1.8em;
+}
+
+/* Asegúrate de incluir esta parte en header.css */
+
+/* Ocultar el submenú por defecto */
+#desplegable ul {
+  display: none; /* Ocultar el submenú */
+  position: absolute; /* Asegurarse de que esté flotando */
+  background-color: white; /* Fondo para diferenciar del contenido principal */
+  list-style: none; /* Sin puntos en la lista */
+  margin: 0;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  z-index: 1000; /* Asegurarse de que esté encima */
+}
+
+/* Mostrar el submenú al pasar el cursor */
+#desplegable:hover ul {
+  display: block; /* Mostrar el submenú */
+}
+
+/* Opcional: estilos para los elementos del submenú */
+#desplegable ul li {
+  margin: 5px 0; /* Espaciado entre elementos */
+}
+
+#desplegable ul li a {
+  text-decoration: none; /* Quitar subrayado */
+  color: black; /* Color del texto */
+  display: flex; /* Para alinear íconos y texto */
+  align-items: center;
+  gap: 5px; /* Espacio entre ícono y texto */
+}
+
+#desplegable ul li a:hover {
+  color: #007BFF; /* Color al pasar el cursor */
+}
