@@ -69,8 +69,8 @@ header {
   }
   
 .user-image{
-  max-width: 2.3rem;
-  max-height: 2.3rem;
+  max-width: 2rem;
+  max-height: 2rem;
   border-radius: 50%;
   border: 2px solid #000;
 }
@@ -81,41 +81,55 @@ ul img{
 }
 
 .donation-button img{
-  max-height: 1.8em;
+  max-height: 2em;
 }
 
-/* Asegúrate de incluir esta parte en header.css */
-
-/* Ocultar el submenú por defecto */
 #desplegable ul {
-  display: none; /* Ocultar el submenú */
-  position: absolute; /* Asegurarse de que esté flotando */
-  background-color: white; /* Fondo para diferenciar del contenido principal */
-  list-style: none; /* Sin puntos en la lista */
+  display: none; /* Ocultar el submenú por defecto */
+  position: absolute; /* Hacer que flote */
+  background-color: #fff8ee; /* Fondo del submenú */
+  list-style: none; /* Sin puntos de lista */
   margin: 0;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-  z-index: 1000; /* Asegurarse de que esté encima */
+  width: 10rem; /* Ajustar el ancho */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+  z-index: 1000; /* Prioridad de capa */
+  border-radius: 5px; /* Bordes redondeados */
+  text-align: center; /* Centrar los textos */
+  opacity: 0; /* Comenzar invisible */
+  transform: translateY(-10px); /* Mover hacia arriba inicialmente */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Suavizar transición */
 }
 
 /* Mostrar el submenú al pasar el cursor */
 #desplegable:hover ul {
   display: block; /* Mostrar el submenú */
+  opacity: 1; /* Totalmente visible */
+  transform: translateY(0); /* Volver a posición original */
 }
 
-/* Opcional: estilos para los elementos del submenú */
+/* Estilos de los elementos del submenú */
 #desplegable ul li {
-  margin: 5px 0; /* Espaciado entre elementos */
+  margin: 10px 0; /* Espaciado entre elementos */
+  display: flex; /* Alinear ícono y texto */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
 }
 
+/* Estilos para los enlaces del submenú */
 #desplegable ul li a {
   text-decoration: none; /* Quitar subrayado */
   color: black; /* Color del texto */
-  display: flex; /* Para alinear íconos y texto */
-  align-items: center;
-  gap: 5px; /* Espacio entre ícono y texto */
+  display: flex; /* Flex para manejar íconos y texto */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  gap: 10px; /* Separación entre ícono y texto */
+  padding: 5px; /* Espacio interno */
+  transition: color 0.3s ease; /* Suavizar el cambio de color */
 }
 
+/* Cambios al pasar el cursor sobre un enlace */
 #desplegable ul li a:hover {
-  color: #007BFF; /* Color al pasar el cursor */
+  color: #f5421f; /* Cambiar color de texto */
 }
+
