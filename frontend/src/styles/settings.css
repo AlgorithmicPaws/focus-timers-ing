@@ -1,0 +1,122 @@
+#page-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+#page-settings h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#settings-container {
+    width: 60%;
+    background: #fff8ee;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#settings-container .config-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+#settings-container label {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#settings-container input[type="text"],
+#settings-container input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+#settings-container .user-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#settings-container .user-image img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#settings-container .user-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#settings-container .image-options {
+    display: none;
+    position: absolute;
+    top: 9rem;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    text-align: center;
+    z-index: 10;
+}
+
+#settings-container .image-options button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.2rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#settings-container .image-options .change {
+    background-color: #4caf50;
+    color: white;
+}
+
+#settings-container .image-options .delete {
+    background-color: #f44336;
+    color: white;
+}
+
+#settings-container .add-email {
+    text-align: center;
+}
+
+#settings-container .add-email button {
+    background-color: rgba(245, 66, 31, 0.8);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#settings-container .add-email button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
