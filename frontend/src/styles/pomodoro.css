@@ -159,3 +159,20 @@
 #amount.time-setter {
     border-color: #000000;
 }
+
+.focus {
+    border-color: #f5421F;
+}
+
+#focus-setter {
+    border-color: #f5421f;
+}
+
+#break-setter {
+    border-color: #865e3c;
+}
+
+#longbreak-setter {
+    border-color: #508c2b;
+}
+

@@ -16,6 +16,14 @@ const PomodoroTimer = () => {
     initializeTimer();
   }, [focusTime, breakTime, longBreakTime, currentPhase]);
 
+
+  useEffect(() => {
+    if (!isRunning) {
+      initializeTimer();
+    }
+    updateWaterStyles();
+  }, [focusTime, breakTime, longBreakTime, currentPhase, timeRemaining]);
+
   // Inicializar el temporizador según la fase actual
   const initializeTimer = () => {
     let time = 0;
@@ -102,6 +110,30 @@ const PomodoroTimer = () => {
     setter(isNaN(value) || value < 0 ? 0 : value);
   };
 
+  // Animacion
+  const getWaterHeight = () => {
+    const maxTime =
+      currentPhase === "focus"
+        ? focusTime * 60
+        : currentPhase === "break"
+        ? breakTime * 60
+        : longBreakTime * 60;
+    const percentage = (timeRemaining / maxTime) * 100;
+    return `${percentage}%`;
+  };
+
+  const updateWaterStyles = () => {
+    const root = document.documentElement;
+    const color =
+      currentPhase === "focus"
+        ? "#ff7b61"
+        : currentPhase === "break"
+        ? "#4ea4ff"
+        : "#7ab854";
+    root.style.setProperty("--water-height", getWaterHeight());
+    root.style.setProperty("--water-color", color);
+  };
+
   useEffect(() => {
     document.title = `Pomodoro | ${currentPhase === "focus" ? "Focus" : "Break"}`;
   }, [currentPhase]);
@@ -124,7 +156,7 @@ const PomodoroTimer = () => {
             <div className="form-group">
               <img id="focus-icon" src={work} alt="Focus time" />
               <label>Focus</label>
-              <input
+              <input id="focus-setter"
                 type="number"
                 min="0"
                 value={focusTime || ""}
@@ -134,7 +166,7 @@ const PomodoroTimer = () => {
             <div className="form-group">
               <img id="coffe-icon" src={coffe} alt="Break time" />
               <label>Break</label>
-              <input
+              <input id="break-setter"
                 type="number"
                 min="0"
                 value={breakTime || ""}
@@ -144,7 +176,7 @@ const PomodoroTimer = () => {
             <div className="form-group">
               <img id="couch-icon" src={couch} alt="Long break time" />
               <label>Long Break</label>
-              <input
+              <input id="longbreak-setter"
                 type="number"
                 min="0"
                 value={longBreakTime || ""}
