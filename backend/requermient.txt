@@ -10,3 +10,4 @@ python-multipart
 pydantic
 pytest 
 pytest-asyncio
+fastapi-jwt-auth

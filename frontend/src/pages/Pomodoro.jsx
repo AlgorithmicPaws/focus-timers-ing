@@ -3,19 +3,22 @@ import "../styles/pomodoro.css";
 import coffe from "../assets/images/coffe.svg";
 import work from "../assets/images/work.svg";
 import couch from "../assets/images/couch.svg";
+import tomato from "../assets/images/tomato.svg"; 
 
 const PomodoroTimer = () => {
   const [focusTime, setFocusTime] = useState(20);
   const [breakTime, setBreakTime] = useState(5);
   const [longBreakTime, setLongBreakTime] = useState(30);
+  const [pomodorosAmount, setPomodorosAmount] = useState(4);
+  const [cyclesRemaining, setCyclesRemaining] = useState(pomodorosAmount);
   const [timeRemaining, setTimeRemaining] = useState(focusTime * 60);
   const [currentPhase, setCurrentPhase] = useState("focus");
   const [isRunning, setIsRunning] = useState(false);
-  const timerRef = useRef(null); // Referencia al temporizador
+  const timerRef = useRef(null);
+
   useEffect(() => {
     initializeTimer();
-  }, [focusTime, breakTime, longBreakTime, currentPhase]);
-
+  }, [focusTime, breakTime, longBreakTime, currentPhase, pomodorosAmount]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -24,7 +27,6 @@ const PomodoroTimer = () => {
     updateWaterStyles();
   }, [focusTime, breakTime, longBreakTime, currentPhase, timeRemaining]);
 
-  // Inicializar el temporizador según la fase actual
   const initializeTimer = () => {
     let time = 0;
     switch (currentPhase) {
@@ -43,74 +45,88 @@ const PomodoroTimer = () => {
     setTimeRemaining(time);
   };
 
-  // Iniciar o pausar el temporizador
   const toggleTimer = () => {
-    console.log(`Timer toggled. Current state: ${isRunning ? "Running" : "Paused"}`);
     if (isRunning) {
-      clearInterval(timerRef.current); // Detener el temporizador
+      clearInterval(timerRef.current);
       timerRef.current = null;
       setIsRunning(false);
     } else {
       setIsRunning(true);
       timerRef.current = setInterval(() => {
         setTimeRemaining((prev) => {
-          console.log(`Time remaining: ${Math.floor(prev / 60)}:${String(prev % 60).padStart(2, "0")}`);
           if (prev > 0) return prev - 1;
-          clearInterval(timerRef.current); // Detener al llegar a 0
+          clearInterval(timerRef.current);
           timerRef.current = null;
-          switchPhase();
+          switchPhase(); // Automatically switch to the next phase
           return 0;
         });
       }, 1000);
     }
   };
 
-  // Cambiar la fase actual y reiniciar el temporizador
   const switchPhase = () => {
-    console.log(`Switching phase. Previous phase: ${currentPhase}`);
     setIsRunning(false);
     clearInterval(timerRef.current);
     timerRef.current = null;
-
+  
     if (currentPhase === "focus") {
-      setCurrentPhase("break");
-      setTimeRemaining(breakTime * 60);
-      console.log(`New phase: break. Time set to: ${breakTime} minutes`);
+      if (cyclesRemaining > 1) {
+        // Transition to short break and decrement remaining cycles
+        setCurrentPhase("break");
+        setTimeRemaining(breakTime * 60);
+        setCyclesRemaining((prev) => prev - 1);
+      } else {
+        // Transition to long break and reset cycle count
+        setCurrentPhase("longbreak");
+        setTimeRemaining(longBreakTime * 60);
+        setCyclesRemaining(pomodorosAmount);
+      }
     } else if (currentPhase === "break") {
-      setCurrentPhase("longbreak");
-      setTimeRemaining(longBreakTime * 60);
-      console.log(`New phase: longbreak. Time set to: ${longBreakTime} minutes`);
-    } else {
+      // Return to focus phase
       setCurrentPhase("focus");
       setTimeRemaining(focusTime * 60);
-      console.log(`New phase: focus. Time set to: ${focusTime} minutes`);
+    } else if (currentPhase === "longbreak") {
+      // After long break, return to focus and restart cycles
+      setCurrentPhase("focus");
+      setTimeRemaining(focusTime * 60);
+      setCyclesRemaining(pomodorosAmount);
     }
+  
+    toggleTimer(); // Automatically start the timer for the next phase
   };
+  
 
-  // Reiniciar el temporizador
   const resetTimer = () => {
     clearInterval(timerRef.current);
     timerRef.current = null;
     setIsRunning(false);
     setCurrentPhase("focus");
+    setCyclesRemaining(pomodorosAmount);
     initializeTimer();
   };
 
-  // Mostrar el tiempo restante en formato mm:ss
   const updateTimeDisplay = () => {
-    const clampedTime = Math.max(0, timeRemaining); // Evitar números negativos
-    const minutes = Math.floor(clampedTime / 60);
+    const clampedTime = Math.max(0, timeRemaining);
+    const hours = Math.floor(clampedTime / 3600);
+    const minutes = Math.floor((clampedTime % 3600) / 60);
     const seconds = clampedTime % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return hours > 0
+      ? `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+      : `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
 
-  // Validar cambios en los inputs
   const handleTimeChange = (setter) => (e) => {
     const value = parseInt(e.target.value, 10);
     setter(isNaN(value) || value < 0 ? 0 : value);
   };
 
-  // Animacion
+  const handlePomodoroChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    const newPomodoros = isNaN(value) || value < 0 ? 0 : value;
+    setPomodorosAmount(newPomodoros);
+    setCyclesRemaining(newPomodoros);
+  };
+
   const getWaterHeight = () => {
     const maxTime =
       currentPhase === "focus"
@@ -126,13 +142,15 @@ const PomodoroTimer = () => {
     const root = document.documentElement;
     const color =
       currentPhase === "focus"
-        ? "#ff7b61"
+        ? "#ff7b61" // Red for focus
         : currentPhase === "break"
-        ? "#4ea4ff"
-        : "#7ab854";
+        ? "#4ea4ff" // Blue for short break
+        : "#7ab854"; // Green for long break
+  
     root.style.setProperty("--water-height", getWaterHeight());
-    root.style.setProperty("--water-color", color);
+    root.style.setProperty("--water-color", color); // Update water color
   };
+  
 
   useEffect(() => {
     document.title = `Pomodoro | ${currentPhase === "focus" ? "Focus" : "Break"}`;
@@ -183,14 +201,23 @@ const PomodoroTimer = () => {
                 onChange={handleTimeChange(setLongBreakTime)}
               />
             </div>
+            <div className="form-group">
+              <img id="tomato-icon" src={tomato} alt="Pomodoro amount" />
+              <label>Pomodoro #</label>
+              <input id="pomodoro-setter"
+                type="number"
+                min="0"
+                value={pomodorosAmount || ""}
+                onChange={handlePomodoroChange}
+              />
+            </div>
           </div>
-
           <div className="timer-buttons">
             <button onClick={toggleTimer}>{isRunning ? "Pause" : "Start"}</button>
             <button
               onClick={() => {
                 if (isRunning) {
-                  switchPhase(); // Cambiar a la siguiente fase si está corriendo
+                  switchPhase();
                 } else {
                   if (window.confirm("¿Seguro que quieres reiniciar el temporizador?")) {
                     resetTimer();
