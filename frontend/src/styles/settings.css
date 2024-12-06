@@ -1,122 +1,110 @@
-#page-settings {
+#register-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-top: 4rem;
-}
-
-#page-settings h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    padding-top: 50px;
     text-align: center;
-    margin-bottom: 2rem;
+
 }
 
-#settings-container {
-    width: 60%;
-    background: #fff8ee;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 1rem;
+h2 {
+    margin-top: 1em;
+    font-size: 3em;
+    padding-top: 1cqi;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el formulario */
+    background-color: #fff8ee;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 599px;
+    margin: 0 auto;
+    margin-top: 5em;/* Asegura que el contenido interno esté centrado */
 }
 
-#settings-container .config-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-}
 
-#settings-container label {
-    font-size: 1.2rem;
-    font-weight: 600;
-}
 
-#settings-container input[type="text"],
-#settings-container input[type="email"] {
+.config-item {
+    margin: 1em 0;
     width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    font-size: 1rem;
+    max-width: 500px;
 }
 
-#settings-container .user-image {
+.config-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.config-item input[type="text"],
+.config-item input[type="email"] {
+    width: 70%;
+    padding: 10px;
+    padding-left: 1em;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #080808;
+}
+
+.config-item input[type="text"]::placeholder,
+.config-item input[type="email"]::placeholder {
+    color: #7a7a7a;
+}
+
+#user-image2 {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-#settings-container .user-image img {
-    width: 8rem;
-    height: 8rem;
+    margin-bottom: 1em; 
+    width: 6em;
+    height: 6em;
+    border: 3px solid #000;
     border-radius: 50%;
-    border: 2px solid #ddd;
+}
+
+
+#user-image2 img {
+    border-radius: 50%;
+    border: 3px solid #000;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
-#settings-container .user-image img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-#settings-container .image-options {
-    display: none;
-    position: absolute;
-    top: 9rem;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem;
-    text-align: center;
-    z-index: 10;
-}
-
-#settings-container .image-options button {
+#settings-form button {
     width: 100%;
-    padding: 0.5rem;
-    margin: 0.2rem 0;
+    padding: 10px;
+    background-color: #f5421f66;
+    color: #000000;
     border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-#settings-container .image-options .change {
-    background-color: #4caf50;
-    color: white;
+#settings-form button:hover {
+    background-color: #f5421f;
 }
 
-#settings-container .image-options .delete {
-    background-color: #f44336;
-    color: white;
+#login-redirect {
+    margin-top: 2em;
+    text-align: center; /* Centra el texto */
+    color: #000000;
+    display: flex;
+    justify-content: center; /* Centra los elementos hijos horizontalmente */
+    align-items: center; /* Centra los elementos hijos verticalmente */
 }
 
-#settings-container .add-email {
-    text-align: center;
-}
-
-#settings-container .add-email button {
-    background-color: rgba(245, 66, 31, 0.8);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
+#logout-link {
+    color: #1372b0;
+    text-decoration: underline;
+    margin-left: 0.5rem;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    display: inline-block; /* Garantiza que se comporte como un elemento en línea */
 }
 
-#settings-container .add-email button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}

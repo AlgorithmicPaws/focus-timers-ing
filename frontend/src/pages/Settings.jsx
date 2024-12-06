@@ -1,29 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/settings.css';
 
+import user2 from '../assets/images/user2.svg';
+
 export default function Settings() {
-  const [showOptions, setShowOptions] = useState(false);
-  const [alternateEmails, setAlternateEmails] = useState([]);
-
-  const toggleOptions = () => {
-    setShowOptions(!showOptions);
-  };
-
-  const changeImage = () => {
-    alert('Función para cambiar imagen no implementada');
-  };
-
-  const deleteImage = () => {
-    const userImage = document.getElementById('user-image');
-    if (userImage) {
-      userImage.src = 'https://via.placeholder.com/80';
-    }
-    alert('Imagen eliminada');
-  };
-
-  const addAlternateEmail = () => {
-    setAlternateEmails([...alternateEmails, '']);
-  };
 
   return (
     <div>
@@ -31,53 +12,34 @@ export default function Settings() {
         <title>Focus Timers | Settings</title>
       </head>
       <main>
-        <div className="config-container">
-          <h1>Configuración de Usuario</h1>
-          {/* Imagen del Usuario */}
-          <div className="config-item user-image">
-            <img
-              src="https://via.placeholder.com/80"
-              alt="Imagen de usuario"
-              id="user-image"
-              onClick={toggleOptions}
-              style={{ cursor: 'pointer' }}
-            />
-            {showOptions && (
-              <div className="image-options">
-                <button className="change" onClick={changeImage}>
-                  Cambiar
-                </button>
-                <button className="delete" onClick={deleteImage}>
-                  Eliminar
-                </button>
-              </div>
-            )}
-          </div>
-          {/* Nombre del Usuario */}
+        <section id="settings-section">
+          <h2>User Settings</h2>
+          <form id='settings-form'>
           <div className="config-item">
-            <label htmlFor="name">Nombre</label>
-            <input type="text" id="name" defaultValue="Nombre del Usuario" />
+            <img src={user2} alt="Imagen de usuario" id="user-image2" />
           </div>
-          {/* Correo Electrónico */}
           <div className="config-item">
-            <label htmlFor="email">Correo Registrado</label>
+            <label htmlFor="name">Username</label>
+            <input type="text" id="name" defaultValue="Mondongo23" />
+          </div>
+          <div className="config-item">
+            <label htmlFor="email">Registred email</label>
             <input type="email" id="email" defaultValue="usuario@correo.com" />
           </div>
-          {/* Correos Alternativos */}
-          <div className="add-email">
-            <button onClick={addAlternateEmail}>Agregar Dirección Alternativa</button>
+          <div className="config-item">
+            <label htmlFor="password">Change password</label>
+            <input type="email" id="email" placeholder='new password here' />
           </div>
-          {alternateEmails.map((_, index) => (
-            <div className="config-item" key={index}>
-              <label htmlFor={`alternate-email-${index}`}>Correo Alternativo</label>
-              <input
-                type="email"
-                id={`alternate-email-${index}`}
-                placeholder="correo@alternativo.com"
-              />
-            </div>
-          ))}
-        </div>
+          
+          <button type="submit">Save changes</button>
+
+          </form>
+          <div id="login-redirect">
+            <p>Want to log out?</p>
+            <Link to={'/Login'} id="logout-link">Log Out</Link>
+          </div>       
+        </section>
+        
       </main>
     </div>
   );
