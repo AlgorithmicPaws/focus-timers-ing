@@ -1,5 +1,5 @@
 .about-page {
-    background-color: #f4f6f9;
+    background-color: #fff3e2;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -8,12 +8,12 @@
   }
   
   .about-container {
-    background-color: white;
+    background-color: #fff8ee;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
   }
   
   .about-header {
@@ -23,12 +23,12 @@
   
   .about-header h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #000000;
     margin-bottom: 0.5rem;
   }
   
   .about-header p {
-    color: #666;
+    color: #0c0c0c;
     font-size: 1.1rem;
   }
   
@@ -43,6 +43,7 @@
     border-radius: 12px;
     padding: 1.5rem;
     transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   }
   
   .about-card:hover {
