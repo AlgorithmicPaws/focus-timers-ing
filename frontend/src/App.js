@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Pomodoro from './pages/Pomodoro';
 import Signin from './pages/Signin';
 import Sesions from './pages/Sesions';
+import Settings from './pages/Settings';
 import About from './pages/About';
 import Header from './components/header/Header';
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/signin' element={<Signin />}/>
         <Route path='/sesions' element={<Sesions />}/>
         <Route path='/about' element={<About />}/>
+        <Route path='/settings' element={<Settings />}/>
       </Routes>
     </div>
   );

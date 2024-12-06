@@ -24,9 +24,8 @@ function Header() {
                             <li><Link to={'/signin'}>Sign In</Link></li>
                             <li><Link to={'/sesions'}>Sessions</Link></li>
                             <li><Link to={'/about'}>About</Link></li>
-                            <li id='desplegable'><Link to={'/account'}><img src={user} alt='Account' className="user-image"></img></Link>
+                            <li id='desplegable'><Link to={'/account'}><img src={user} alt='Account' id="user-image"></img></Link>
                                 <ul>
-                                    <li><Link to={'/account'}><img src={user} alt='account'></img>Account</Link></li>
                                     <li><Link to={'/settings'}><img src={settings} alt='settings'></img>Settings</Link></li>
                                     <li><Link><img src={logout} alt='logout'></img>Logout</Link></li>
                                 </ul>
