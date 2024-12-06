@@ -179,3 +179,55 @@
 #pomodoro-setter {
     border-color: #000;
 }
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background-color: #fff8ee;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 2px solid #000;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 0.5em;
+  }
+  
+  .popup-buttons button {
+    padding: 10px 20px;
+    border: 1px solid #f05e5e;
+    background-color: #fff8ee;
+    color: #000;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: 1em;
+  }
+  
+  .popup-buttons button:hover {
+    background-color: #F5421f;
+  }
+  
+  .confirmation-message {
+    text-align: center;
+    color: green;
+    margin-top: 20px;
+  }
+  
+
+  

@@ -68,7 +68,7 @@ header {
     color: inherit;
   }
   
-.user-image{
+#user-image{
   max-width: 2rem;
   max-height: 2rem;
   border-radius: 50%;

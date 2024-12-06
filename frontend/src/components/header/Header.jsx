@@ -3,7 +3,7 @@ import logo from '../../assets/images/logo.svg';
 import user from '../../assets/images/user.svg';
 import settings from '../../assets/images/settings.svg';
 import logout from '../../assets/images/logout.svg';
-import bmc from '../../assets/images/bmc-button.svg'
+import bmc from '../../assets/images/bmc-button.svg';
 import { Link } from 'react-router-dom';
 
 function Header() {

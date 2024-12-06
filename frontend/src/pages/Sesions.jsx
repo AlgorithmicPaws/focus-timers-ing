@@ -32,7 +32,7 @@ export default function Sesions() {
                 <SessionCard />
                 <SessionCard />
                 <SessionCard />
-            </div>
+            </div>  
         </div>
       </main>
 
